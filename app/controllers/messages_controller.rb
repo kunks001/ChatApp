@@ -10,11 +10,16 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = Message.create(message_params)
-		if @message.save
-			redirect_to messages_path
-		else
-			render 'new'
-		end
+    if @message.save
+      WebsocketRails[:chat].trigger 'new', @message
+      redirect_to messages_path
+    else
+      render 'new'
+    end
+	end
+
+	def show
+		@message = message.find(params[:id])
 	end
 
 	private

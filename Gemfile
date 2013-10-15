@@ -28,6 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'haml-rails'
+gem 'websocket-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -35,6 +36,7 @@ group :doc do
 end
 
 group :development, :test do
+	gem 'thin'
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'selenium-webdriver'
